@@ -3,33 +3,27 @@
   <head>
     <link rel="stylesheet" href="http://openlayers.org/en/v3.10.1/css/ol.css" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-    <style>
-      .map {
-        height: 400px;
-        width: 100%;
-      }
-    </style>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,600italic,400italic,300italic,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/main.css" type="text/css">
     <script src="http://openlayers.org/en/v3.10.1/build/ol.js" type="text/javascript"></script>
     <script src="jquery.js"></script>
-    <script src="angular.js"></script>
-    <title>Food Access Map</title>
+    <title>Madison Food Access Map</title>
   </head>
   <body>
-    <div id="content"  ng-app ng-controller="displayFunct">
-      <div style="margin: 0 auto; width:960px;">
-        <div class="row">
-         <h1>Food Access Map</h1>
-        </div>
-        <div class="row">
-          <div class="col-md-8">
-           <div id="map" class="map"></div>
+    <div id="content" >
+      <div class="container">
+        <div id="main">
+          <div class="row">
+           <h1>Madison Food Access Map</h1>
           </div>
-          <div class="col-md-4">
-            <div class="row">
-              {{name}}
+          <div class="row">
+            <div class="col-md-8">
+             <div id="map" class="map"></div>
             </div>
-            <div class="row">
-              {{lsad}}
+            <div class="col-md-4">
+              <div class="row">
+                <h2><span id="_neighborhood">Neighborhood</span>&nbsp;/&nbsp;<span id="_lsad"></span></h2>
+              </div>
             </div>
           </div>
         </div>
@@ -37,7 +31,7 @@
     </div>
   
     <script type="text/javascript">
-    function displayFunct ($scope) {
+    //function displayFunct ($scope) {
 
       var style = new ol.style.Style({
         fill: new ol.style.Fill({
@@ -92,10 +86,13 @@
         }
       });
 
-      $scope.lastFeat = null;
+      var lastFeat = null;
+      var neighbor_div = $('#_neighborhood');
+      var lsad_div = $('#_lsad');
+     // $scope.lastFeat = null;
       //not working for no reason but whatever
-      $scope.name = '';
-      $scope.lsad = '';
+      //$scope.name = '';
+     // $scope.lsad = '';
       
       var map = new ol.Map({
         target: 'map',
@@ -113,22 +110,22 @@
 
       map.getViewport().addEventListener("click", function(e) { 
         map.forEachFeatureAtPixel(map.getEventPixel(e), function (feature, layer) {
-            if($scope.lastFeat)
-              $scope.lastFeat.setStyle(style);
+            if(lastFeat)
+              lastFeat.setStyle(style);
 
             feature.setStyle(highlight);
-            $scope.lastFeat = feature;
+            lastFeat = feature;
             setProps(feature.get('NAME10'), feature.get('LSAD10'));
         });
       });
 
       function setProps(name, lsad){
-        $scope.name = name;
-        $scope.lsad = lsad;
+        neighbor_div.text(name);
+        lsad_div.text(lsad);
         console.log(name, lsad);
       }
 
-      }
+     // }
     </script>
   </body>
 </html>
