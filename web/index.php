@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="http://openlayers.org/en/v3.10.1/css/ol.css" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,600italic,400italic,300italic,300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/main.css" type="text/css">
-    <script src="http://openlayers.org/en/v3.10.1/build/ol.js" type="text/javascript"></script>
-    <script src="jquery.js"></script>
+    <link rel="stylesheet" href="/css/main.css" type="text/css">
+    <link rel="stylesheet" href="/css/ol.css" type="text/css">
+    <script src="js/jquery.js"></script>
+    <script src="js/ol.js"></script>
     <title>Madison Food Access Map</title>
   </head>
   <body>
