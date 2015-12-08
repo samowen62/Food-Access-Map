@@ -1,3 +1,24 @@
+<?php
+  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+  $server = $url["host"];
+  $user = $url["user"];
+  $pass = $url["pass"];
+  $db = substr($url["path"], 1);
+  //$db = 'heroku_f89aaf7dbb9da32';
+
+  $conn = new mysqli($server, $user, $pass, $db);
+
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  } 
+
+  $stores = $conn->query("SELECT id, name, type, address, date_surveyed FROM store");
+
+  
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -29,7 +50,16 @@
         </div>
       </div>
     </div>
-  
+  <?php 
+
+    if ($stores->num_rows > 0) {
+
+      while($row = $stores->fetch_assoc()) {
+        var_dump($row);
+      }
+    }
+  ?>
+
     <script type="text/javascript">
     //function displayFunct ($scope) {
 
@@ -127,5 +157,8 @@
 
      // }
     </script>
+<?php 
+  $conn->close();
+?>
   </body>
 </html>
