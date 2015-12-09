@@ -1,11 +1,15 @@
 <?php
-  $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+  include 'config.php';
+
+  //run in shell to connect
+  //mysql -h us-cdbr-iron-east-03.cleardb.net --user=b9599e5859242c --password
+
 
   $server = $url["host"];
   $user = $url["user"];
   $pass = $url["pass"];
   $db = substr($url["path"], 1);
-  //$db = 'heroku_f89aaf7dbb9da32';
 
   $conn = new mysqli($server, $user, $pass, $db);
 
@@ -13,10 +17,16 @@
     die("Connection failed: " . $conn->connect_error);
   } 
 
-  $stores = $conn->query("SELECT id, name, type, address, date_surveyed FROM store");
+  $stores_sql = $conn->query("SELECT id, type, address, date_surveyed, x, y FROM store");
+  $stores = array();
+  while($r = mysqli_fetch_assoc($stores_sql)) {
+      $stores[] = $r;
+  }
 
+  $stores = json_encode(($stores), JSON_PRETTY_PRINT,3);
+
+  var_dump($stores);
   
-
 ?>
 
 <!doctype html>
@@ -50,19 +60,17 @@
         </div>
       </div>
     </div>
-  <?php 
-
-    if ($stores->num_rows > 0) {
-
-      while($row = $stores->fetch_assoc()) {
-        var_dump($row);
-      }
-    }
-  ?>
 
     <script type="text/javascript">
-    //function displayFunct ($scope) {
+      /*
+       *  JSON objects from database
+       */
+      var stores = <?php echo $stores; ?>;
 
+
+      /*
+       *  Neighborhood Layer
+       */
       var style = new ol.style.Style({
         fill: new ol.style.Fill({
           color: 'rgba(255, 255, 255, 0.3)'
@@ -70,26 +78,6 @@
         stroke: new ol.style.Stroke({
           color: '#319FD3',
           width: 1
-        }),
-        text: new ol.style.Text({
-          font: '10px Calibri,sans-serif',
-          fill: new ol.style.Fill({
-            color: '#000'
-          }),
-          stroke: new ol.style.Stroke({
-            color: '#fff',
-            width: 3
-          })
-        })
-      });
-
-      var highlight = new ol.style.Style({
-        fill: new ol.style.Fill({
-          color: 'rgba(0, 255, 0, 0.6)'
-        }),
-        stroke: new ol.style.Stroke({
-          color: '#009900',
-          width: 3
         }),
         text: new ol.style.Text({
           font: '10px Calibri,sans-serif',
@@ -116,21 +104,63 @@
         }
       });
 
+
+      /*
+       *  Marker Layer
+       */
+      var markerFeatures=[];
+
+      $.each(stores,function(k,v){ 
+        markerFeatures.push(new ol.Feature({
+          geometry: new ol.geom.Point(ol.proj.transform([parseFloat(v.y),parseFloat(v.x)], 'EPSG:4326',     
+          'EPSG:3857')),
+          address: v.address,
+          date: v.date_surveyed,
+          name: v.name,
+          type: v.type
+        }));
+      });
+      
+
+      var markerSource = new ol.source.Vector({
+        features: markerFeatures 
+      });
+
+      var markerStyle = new ol.style.Style({
+        image: new ol.style.Icon(({
+          anchor: [0.5, 46],
+          anchorXUnits: 'fraction',
+          anchorYUnits: 'pixels',
+          opacity: 0.75,
+          src: 'images/marker-green.png'
+        }))
+      });
+
+      var markerLayer = new ol.layer.Vector({
+        source: markerSource,
+        style: markerStyle
+      });
+
+
+      /*
+       *  DOM objects on page
+       */
       var lastFeat = null;
       var neighbor_div = $('#_neighborhood');
       var lsad_div = $('#_lsad');
-     // $scope.lastFeat = null;
-      //not working for no reason but whatever
-      //$scope.name = '';
-     // $scope.lsad = '';
       
+
+      /*
+       *  Map and callbacks
+       */
       var map = new ol.Map({
         target: 'map',
         layers: [
           new ol.layer.Tile({
             source: new ol.source.OSM({layer: 'sat'})
           }),
-          vectorLayer
+          vectorLayer,
+          markerLayer
         ],
         view: new ol.View({
           center: ol.proj.fromLonLat([-89.4,43.0699]),
@@ -140,14 +170,13 @@
 
       map.getViewport().addEventListener("click", function(e) { 
         map.forEachFeatureAtPixel(map.getEventPixel(e), function (feature, layer) {
-            if(lastFeat)
-              lastFeat.setStyle(style);
-
-            feature.setStyle(highlight);
-            lastFeat = feature;
-            setProps(feature.get('NAME10'), feature.get('LSAD10'));
+            
+            var properties = feature.getProperties();
+            console.log(properties);
         });
       });
+
+
 
       function setProps(name, lsad){
         neighbor_div.text(name);
@@ -155,7 +184,6 @@
         console.log(name, lsad);
       }
 
-     // }
     </script>
 <?php 
   $conn->close();
