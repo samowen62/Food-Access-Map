@@ -17,7 +17,8 @@
     die("Connection failed: " . $conn->connect_error);
   } 
 
-  $stores_sql = $conn->query("SELECT id, type, address, date_surveyed, x, y FROM store");
+  $store_query = "SELECT id, name, type, address, date_surveyed, x, y FROM store";
+  $stores_sql = $conn->query($store_query);
   $stores = array();
   while($r = mysqli_fetch_assoc($stores_sql)) {
       $stores[] = $r;
@@ -25,8 +26,6 @@
 
   $stores = json_encode(($stores), JSON_PRETTY_PRINT,3);
 
-  var_dump($stores);
-  
 ?>
 
 <!doctype html>
@@ -164,7 +163,7 @@
         ],
         view: new ol.View({
           center: ol.proj.fromLonLat([-89.4,43.0699]),
-          zoom: 13
+          zoom: 12
         })
       });
 
