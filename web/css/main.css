@@ -43,3 +43,32 @@
 	font-size: 20px;
 	color:#eeeeee;
 }
+
+#content .container #main .rating{
+  display: none;
+  margin-left: 10px;
+}
+
+#content .container #main .rating-title{
+  font-size: 19px;
+  cursor: pointer;
+}
+
+#content .container #main #info{
+  display: none;
+  color: #eeeeee;
+  border: 2px solid white;
+  padding-left: 23px;
+  margin-top: 9px;
+  margin-left: -8px;
+  max-height: 318px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#content .container #main #info .fa-info-circle{
+  font-size: 14px;
+  float: right;
+  padding-right: 100px;
+  padding-top: 8px;
+}
