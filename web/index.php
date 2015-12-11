@@ -64,6 +64,88 @@
                 <div class="row">
                   <h4>Topic Ratings</h4>
                 </div>
+                <div class="row rating-title">
+                  <span onclick="dropDown('#_general')">General Info</span>
+                </div>
+                <div class="rating" id="_general">
+                  <div class="row rating-title" >
+                    <span onclick="dropDown('#_milk')">Milk</span> <i class="fa fa-info-circle" onclick="infoModal('Milk Info')"></i>
+                  </div>
+                  <div class="row rating" id="_milk">
+                    Milk Availability Rating: <span id="_milk_avail"></span>&nbsp;/&nbsp;2<br />
+                    Milk Price Rating: <span id="_milk_price"></span>&nbsp;/&nbsp;2
+                  </div>
+                  <div class="row rating-title" >
+                    <span onclick="dropDown('#_fruit')">Fruit</span> <i class="fa fa-info-circle" onclick="infoModal('Fruits Info')"></i>
+                  </div>
+                  <div class="row rating" id="_fruit">
+                    Fruit Availability Rating: <span id="_fruit_avail"></span>&nbsp;/&nbsp;3<br />
+                    Fruit Quality Rating: <span id="_fruit_qual"></span>&nbsp;/&nbsp;3
+                  </div>
+                  <div class="row rating-title" >
+                    <span onclick="dropDown('#_veg')">Vegetables</span> <i class="fa fa-info-circle" onclick="infoModal('Vegetable Info')"></i>
+                  </div>
+                  <div class="row rating" id="_veg">
+                    Vegetable Availability Rating: <span id="_veg_avail"></span>&nbsp;/&nbsp;3<br />
+                    Vegetable Quality Rating: <span id="_veg_qual"></span>&nbsp;/&nbsp;3
+                  </div>
+                  <div class="row rating-title" >
+                    <span onclick="dropDown('#_beef')">Ground Beef</span> <i class="fa fa-info-circle" onclick="infoModal('Ground Beef Info')"></i>
+                  </div>
+                  <div class="row rating" id="_beef">
+                    Ground Beef Availability Rating: <span id="_beef_avail"></span>&nbsp;/&nbsp;2<br />
+                    Ground Beef Price Rating: <span id="_beef_price"></span>&nbsp;/&nbsp;2
+                  </div>
+                  <div class="row rating-title" >
+                    <span onclick="dropDown('#_hot_dog')">Hot Dogs</span> <i class="fa fa-info-circle" onclick="infoModal('Hot Dog Info')"></i>
+                  </div>
+                  <div class="row rating" id="_hot_dog">
+                    Hot Dog Availability Rating: <span id="_hot_dog_avail"></span>&nbsp;/&nbsp;2<br />
+                    Hot Dog Price Rating: <span id="_hot_dog_price"></span>&nbsp;/&nbsp;2
+                  </div>
+                  <div class="row rating-title" >
+                    <span onclick="dropDown('#_frozen_dinner')">Frozen Dinner</span> <i class="fa fa-info-circle" onclick="infoModal('Frozen Dinner Info')"></i>
+                  </div>
+                  <div class="row rating" id="_frozen_dinner">
+                    Frozen Dinner Availability Rating: <span id="_frozen_dinner_avail"></span>&nbsp;/&nbsp;3<br />
+                    Frozen Dinner Price Rating: <span id="_frozen_dinner_price"></span>&nbsp;/&nbsp;2
+                  </div>
+                  <div class="row rating-title" >
+                    <span onclick="dropDown('#_beverage')">Beverages</span> <i class="fa fa-info-circle" onclick="infoModal('Beverage Info')"></i>
+                  </div>
+                  <div class="row rating" id="_beverage">
+                    Beverage Availability Rating: <span id="_beverage_avail"></span>&nbsp;/&nbsp;1<br />
+                    Beverage Price Rating: <span id="_beverage_price"></span>&nbsp;/&nbsp;2
+                  </div>
+                  <div class="row rating-title">
+                    <span onclick="dropDown('#_bread')">Bread</span> <i class="fa fa-info-circle" onclick="infoModal('Bread Info')"></i>
+                  </div>
+                  <div class="row rating" id="_bread">
+                    Bread Availability Rating: <span id="_bread_avail"></span>&nbsp;/&nbsp;2<br />
+                    Bread Price Rating: <span id="_bread_price"></span>&nbsp;/&nbsp;2
+                  </div>
+                  <div class="row rating-title">
+                    <span onclick="dropDown('#_baked')">Baked Goods</span> <i class="fa fa-info-circle" onclick="infoModal('Baked Good Info')"></i>
+                  </div>
+                  <div class="row rating" id="_baked">
+                    Baked Good Availability Rating: <span id="_baked_avail"></span>&nbsp;/&nbsp;2<br />
+                    Baked Good Price Rating: <span id="_baked_price"></span>&nbsp;/&nbsp;2
+                  </div>
+                  <div class="row rating-title">
+                    <span onclick="dropDown('#_chips')">Baked Chips</span> <i class="fa fa-info-circle" onclick="infoModal('Baked Chip Info')"></i>
+                  </div>
+                  <div class="row rating" id="_chips">
+                    Baked Chip Availability Rating: <span id="_chips_avail"></span>&nbsp;/&nbsp;2<br />
+                    Baked Chip Price Rating: <span id="_chips_price"></span>&nbsp;/&nbsp;2
+                  </div>
+                  <div class="row rating-title">
+                    <span onclick="dropDown('#_cereal')">Cereal</span> <i class="fa fa-info-circle" onclick="infoModal('Cereal Info')"></i>
+                  </div>
+                  <div class="row rating" id="_cereal">
+                    Cereal Availability Rating: <span id="_cereal_avail"></span>&nbsp;/&nbsp;2<br />
+                    Cereal Price Rating: <span id="_cereal_price"></span>&nbsp;/&nbsp;2
+                  </div>
+                </div>
                 <div class="row rating-title" >
                   <span onclick="dropDown('#_latino')">Latino Foods</span> <i class="fa fa-info-circle" onclick="infoModal('Latino Food Info')"></i>
                 </div>
@@ -72,89 +154,13 @@
                   Latino Food Price Rating: <span id="_latino_price"></span>&nbsp;/&nbsp;3
                 </div>
                 <div class="row rating-title" >
-                  <span onclick="dropDown('#_asian')">Oriental Foods</span> <i class="fa fa-info-circle" onclick="infoModal('Oriental Food Info')"></i>
+                  <span onclick="dropDown('#_asian')">Asian Foods</span> <i class="fa fa-info-circle" onclick="infoModal('Asian Food Info')"></i>
                 </div>
                 <div class="row rating" id="_asian">
-                  Oriental Food Availability Rating: <span id="_asian_avail"></span>&nbsp;/&nbsp;3<br />
-                  Oriental Food Price Rating: <span id="_asian_price"></span>&nbsp;/&nbsp;3
+                  Asian Food Availability Rating: <span id="_asian_avail"></span>&nbsp;/&nbsp;3<br />
+                  Asian Food Price Rating: <span id="_asian_price"></span>&nbsp;/&nbsp;3
                 </div>
-                <div class="row rating-title" >
-                  <span onclick="dropDown('#_milk')">Milk</span> <i class="fa fa-info-circle" onclick="infoModal('Milk Info')"></i>
-                </div>
-                <div class="row rating" id="_milk">
-                  Milk Availability Rating: <span id="_milk_avail"></span>&nbsp;/&nbsp;2<br />
-                  Milk Price Rating: <span id="_milk_price"></span>&nbsp;/&nbsp;2
-                </div>
-                <div class="row rating-title" >
-                  <span onclick="dropDown('#_fruit')">Fruit</span> <i class="fa fa-info-circle" onclick="infoModal('Fruits Info')"></i>
-                </div>
-                <div class="row rating" id="_fruit">
-                  Fruit Availability Rating: <span id="_fruit_avail"></span>&nbsp;/&nbsp;3<br />
-                  Fruit Quality Rating: <span id="_fruit_qual"></span>&nbsp;/&nbsp;3
-                </div>
-                <div class="row rating-title" >
-                  <span onclick="dropDown('#_veg')">Vegetables</span> <i class="fa fa-info-circle" onclick="infoModal('Vegetable Info')"></i>
-                </div>
-                <div class="row rating" id="_veg">
-                  Vegetable Availability Rating: <span id="_veg_avail"></span>&nbsp;/&nbsp;3<br />
-                  Vegetable Quality Rating: <span id="_veg_qual"></span>&nbsp;/&nbsp;3
-                </div>
-                <div class="row rating-title" >
-                  <span onclick="dropDown('#_beef')">Ground Beef</span> <i class="fa fa-info-circle" onclick="infoModal('Ground Beef Info')"></i>
-                </div>
-                <div class="row rating" id="_beef">
-                  Ground Beef Availability Rating: <span id="_beef_avail"></span>&nbsp;/&nbsp;2<br />
-                  Ground Beef Price Rating: <span id="_beef_price"></span>&nbsp;/&nbsp;2
-                </div>
-                <div class="row rating-title" >
-                  <span onclick="dropDown('#_hot_dog')">Hot Dogs</span> <i class="fa fa-info-circle" onclick="infoModal('Hot Dog Info')"></i>
-                </div>
-                <div class="row rating" id="_hot_dog">
-                  Hot Dog Availability Rating: <span id="_hot_dog_avail"></span>&nbsp;/&nbsp;2<br />
-                  Hot Dog Price Rating: <span id="_hot_dog_price"></span>&nbsp;/&nbsp;2
-                </div>
-                <div class="row rating-title" >
-                  <span onclick="dropDown('#_frozen_dinner')">Frozen Dinner</span> <i class="fa fa-info-circle" onclick="infoModal('Frozen Dinner Info')"></i>
-                </div>
-                <div class="row rating" id="_frozen_dinner">
-                  Frozen Dinner Availability Rating: <span id="_frozen_dinner_avail"></span>&nbsp;/&nbsp;3<br />
-                  Frozen Dinner Price Rating: <span id="_frozen_dinner_price"></span>&nbsp;/&nbsp;2
-                </div>
-                <div class="row rating-title" >
-                  <span onclick="dropDown('#_beverage')">Beverages</span> <i class="fa fa-info-circle" onclick="infoModal('Beverage Info')"></i>
-                </div>
-                <div class="row rating" id="_beverage">
-                  Beverage Availability Rating: <span id="_beverage_avail"></span>&nbsp;/&nbsp;1<br />
-                  Beverage Price Rating: <span id="_beverage_price"></span>&nbsp;/&nbsp;2
-                </div>
-                <div class="row rating-title">
-                  <span onclick="dropDown('#_bread')">Bread</span> <i class="fa fa-info-circle" onclick="infoModal('Bread Info')"></i>
-                </div>
-                <div class="row rating" id="_bread">
-                  Bread Availability Rating: <span id="_bread_avail"></span>&nbsp;/&nbsp;2<br />
-                  Bread Price Rating: <span id="_bread_price"></span>&nbsp;/&nbsp;2
-                </div>
-                <div class="row rating-title">
-                  <span onclick="dropDown('#_baked')">Baked Goods</span> <i class="fa fa-info-circle" onclick="infoModal('Baked Good Info')"></i>
-                </div>
-                <div class="row rating" id="_baked">
-                  Baked Good Availability Rating: <span id="_baked_avail"></span>&nbsp;/&nbsp;2<br />
-                  Baked Good Price Rating: <span id="_baked_price"></span>&nbsp;/&nbsp;2
-                </div>
-                <div class="row rating-title">
-                  <span onclick="dropDown('#_chips')">Baked Chips</span> <i class="fa fa-info-circle" onclick="infoModal('Baked Chip Info')"></i>
-                </div>
-                <div class="row rating" id="_chips">
-                  Baked Chip Availability Rating: <span id="_chips_avail"></span>&nbsp;/&nbsp;2<br />
-                  Baked Chip Price Rating: <span id="_chips_price"></span>&nbsp;/&nbsp;2
-                </div>
-                <div class="row rating-title">
-                  <span onclick="dropDown('#_cereal')">Cereal</span> <i class="fa fa-info-circle" onclick="infoModal('Cereal Info')"></i>
-                </div>
-                <div class="row rating" id="_cereal">
-                  Cereal Availability Rating: <span id="_cereal_avail"></span>&nbsp;/&nbsp;2<br />
-                  Cereal Price Rating: <span id="_cereal_price"></span>&nbsp;/&nbsp;2
-                </div>
+                
 
               </div>
             </div>
@@ -215,6 +221,7 @@
 
       var styles = [style];
 
+      //maybe get rid of text since it looks cluttered
       var vectorLayer = new ol.layer.Vector({
         source: new ol.source.Vector({
           url: 'vote.geojson',
