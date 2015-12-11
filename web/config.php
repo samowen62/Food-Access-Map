@@ -1,5 +1,5 @@
 <?php 
-	$prod = FALSE;
+	$prod = TRUE;
 	//$prod = TRUE;
 
 	if($prod){
